@@ -1,3 +1,4 @@
+const dados = require('./dados.json');
 // -1
 let indice = 13;
 soma = 0;
@@ -27,22 +28,24 @@ function checkFibonacci(num) {
         console.log(`O número ${num} não pertence à sequência de Fibonacci.`);
     }
 }
-
+checkFibonacci(123)
 // - 3
 function FaturamentoDaDistribuidora() {
-    let faturamentoMensal = [1000, 2000, 1500, 2500, 1800, 2200, 2700, 3000, 2400, 2100, 2300, 2600];
-    let menorFaturamento = faturamentoMensal.filter((faturamento => Math.min(faturamento)));
-    let maiorFaturamento = faturamentoMensal.filter((faturamento => Math.max(faturamento)));
     
-    let soma = faturamentoMensal.reduce((accum, faturamento) => accum + faturamento, 0);
+    let faturamentoMensal = dados;
+    let menorFaturamento = faturamentoMensal.filter((faturamento => Math.min(faturamento.valor)));
+    let maiorFaturamento = faturamentoMensal.filter((faturamento => Math.max(faturamento.valor)));
+    
+    let soma = faturamentoMensal.reduce((accum, faturamento) => accum + faturamento.valor, 0);
     let media = soma / faturamentoMensal.length;
 
-    let diasComSuperiorMedia = faturamentoMensal.filter(faturamento => faturamento > media);
+    let diasComSuperiorMedia = faturamentoMensal.filter(faturamento => faturamento.valor > media);
 
-    console.log(menorFaturamento)
-    console.log(maiorFaturamento)
-    console.log(diasComSuperiorMedia);
+    console.log( "Menor Faturamento", menorFaturamento)
+    console.log("Maior Faturamento" ,maiorFaturamento)
+    console.log("Dias com fatutamenro superior a media" ,diasComSuperiorMedia);
 }
+FaturamentoDaDistribuidora()
 
 // - 4
 function CalculoDeRepresentacao(){
@@ -64,6 +67,7 @@ function CalculoDeRepresentacao(){
     
     console.log(representacoes)
 }
+CalculoDeRepresentacao()
 
 // - 5
 function inverterString(str) {
@@ -73,3 +77,4 @@ function inverterString(str) {
     }
     console.log(invertido);
 }
+inverterString("characters")
